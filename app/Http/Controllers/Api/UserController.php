@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\product;
 use App\Models\User;
 use App\Http\Requests\RegisterRequest;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Auth;
+
 
 class UserController extends Controller
 {
@@ -43,7 +46,7 @@ class UserController extends Controller
         }
     }
 
-    public function update(Request $request ,$postId){
+    public function update(Request $request){
 
         $input=$request->all();
         User::where('id',$request->user()->id)->update([
@@ -57,12 +60,16 @@ class UserController extends Controller
 
     public function logout(Request $request)
     {
-        if (Auth::check()) {
-           Auth::user()->AauthAcessToken()->delete();
-        }
+        // if (Auth::check()) {
+        //    Auth::user()->AauthAcessToken()->delete();
+        // }
+        $request->user()->token()->revoke();
+        return response()->json([
+            'message' => 'Successfully logged out'
+        ]);
     }
 
- 
+
 
 
 

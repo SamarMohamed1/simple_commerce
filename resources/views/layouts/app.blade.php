@@ -34,6 +34,9 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
 
+                            <li class="nav-item">
+                            <a href="{{route('viewUsers')}}" class="nav-link  text-dark">all users</a>
+                            </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

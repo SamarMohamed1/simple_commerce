@@ -2,6 +2,9 @@
 
 @section('content')
 <div class="container">
+        <div class="text-center">
+            <a href="{{ route('userForm') }}" class="btn btn-success">Add new user</a>
+        </div>
     <table class="table table-striped">
     <thead>
         <tr>
@@ -11,11 +14,11 @@
         </tr>
     </thead>
     <tbody>
-        @foreach()
+        @foreach($users as $user)
         <tr>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>{{$user->name}}</td>
+        <td>{{$user->email}}</td>
+        <td>{{$user->phone}}</td>
         </tr>
         @endforeach
     </tbody>
